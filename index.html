@@ -1,29 +1,53 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Agentic Dev Journey</title>
-  </head>
-  <body>
-    <h1 id="title">Hello World 👋</h1>
-    <p>I am becoming an agentic full-stack developer.</p>
+<head>
+  <title>Agentic Dev Journey</title>
+</head>
+<body>
+  <h1 id="title">🤖 Agent ready</h1>
+  <p>I am becoming an agentic full-stack developer.</p>
 
-    <button id="btn">Click me</button>
-<p id="log"></p>
+  <button id="btn">Interact</button>
 
   <script>
-  const button = document.getElementById("btn");
-  const title = document.getElementById("title");
-  const log = document.getElementById("log");
+    // ===== AGENT STATE (memory) =====
+    const agent = {
+      clicks: Number(localStorage.getItem("clicks")) || 0,
+      mood: "idle"
+    };
 
-  let clicks = 0;
+    const button = document.getElementById("btn");
+    const title = document.getElementById("title");
 
-  button.addEventListener("click", () => {
-    clicks++;
-    title.textContent = "🧠 My   Agent activated";
-    log.textContent = `I have been clicked ${clicks} times and    I remember it.`;
-  });
-</script>
+    // ===== AGENT THINK FUNCTION =====
+    function think() {
+      if (agent.clicks < 3) {
+        agent.mood = "curious";
+      } else if (agent.clicks < 6) {
+        agent.mood = "engaged";
+      } else {
+        agent.mood = "confident";
+      }
+    }
 
-  </body>
+    // ===== AGENT ACT FUNCTION =====
+    function act() {
+      title.textContent = `🤖 Mood: ${agent.mood} | Clicks: ${agent.clicks}`;
+    }
+
+    // ===== EVENT (environment input) =====
+    button.addEventListener("click", () => {
+      agent.clicks++;
+      localStorage.setItem("clicks", agent.clicks);
+
+      think(); // agent decides
+      act();   // agent acts
+    });
+
+    // Initial render
+    think();
+    act();
+  </script>
+</body>
 </html>
 
