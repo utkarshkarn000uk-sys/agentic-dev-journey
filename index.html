@@ -11,3 +11,24 @@
     <button>Click me</button>
   </body>
 </html>
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Agentic Dev Journey</title>
+  </head>
+  <body>
+    <h1 id="title">Hello World 👋</h1>
+    <p>I am becoming an agentic full-stack developer.</p>
+
+    <button id="btn">Click me</button>
+
+    <script>
+      const button = document.getElementById("btn");
+      const title = document.getElementById("title");
+
+      button.addEventListener("click", () => {
+        title.textContent = "🔥 Button clicked!";
+      });
+    </script>
+  </body>
+</html>
