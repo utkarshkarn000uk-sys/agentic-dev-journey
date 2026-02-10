@@ -8,15 +8,22 @@
     <p>I am becoming an agentic full-stack developer.</p>
 
     <button id="btn">Click me</button>
+<p id="log"></p>
 
-    <script>
-      const button = document.getElementById("btn");
-      const title = document.getElementById("title");
+  <script>
+  const button = document.getElementById("btn");
+  const title = document.getElementById("title");
+  const log = document.getElementById("log");
 
-      button.addEventListener("click", () => {
-        title.textContent = "🔥 Button clicked!";
-      });
-    </script>
+  let clicks = 0;
+
+  button.addEventListener("click", () => {
+    clicks++;
+    title.textContent = "🧠 Agent activated";
+    log.textContent = `I have been clicked ${clicks} times and I remember it.`;
+  });
+</script>
+
   </body>
 </html>
 
